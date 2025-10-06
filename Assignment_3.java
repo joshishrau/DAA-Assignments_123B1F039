@@ -1,3 +1,4 @@
+//PRN : 123B1F039 Assignment 3
 import java.util.*;
 
 class Item {
@@ -66,3 +67,4 @@ public class FractionalKnapsack {
         System.out.printf("\nMaximum value we can obtain = %.2f\n", maxValue);
     }
 }
+
