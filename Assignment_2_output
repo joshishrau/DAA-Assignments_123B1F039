@@ -1,0 +1,26 @@
+Title: a
+IMDB Rating: 8
+Release Year: 2021
+Watch Time Popularity: 6
+Enter details for movie 2:
+Title: b
+IMDB Rating: 7
+Release Year: 2024
+Watch Time Popularity: 6
+Enter details for movie 3:
+Title: c
+IMDB Rating: 9
+Release Year: 2020
+Watch Time Popularity: 9
+
+Sort by:
+1. IMDB Rating
+2. Release Year
+3. Watch Time Popularity
+Enter choice: 1
+
+Sorted Movies:
+Title: c, IMDB: 9, Year: 2020, Popularity: 9
+Title: a, IMDB: 8, Year: 2021, Popularity: 6
+Title: b, IMDB: 7, Year: 2024, Popularity: 6
+
