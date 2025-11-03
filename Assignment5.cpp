@@ -1,12 +1,13 @@
 // multistage_dp_swiftcargo
 //PRN : 123B1F039 Assignment 5
+//DATE : 25/08/25
 #include <bits/stdc++.h>
 using namespace std;
 
 struct Edge {
     int to;
-    double base_cost;   // static base cost (distance/fuel baseline)
-    double cur_cost;    // current cost after real-time modifiers
+    double base_cost;   
+    double cur_cost; 
 };
 
 int main() {
@@ -55,12 +56,12 @@ int main() {
         rev_adj[v].push_back(u);
     }
 
-    // Dynamic Programming
+   
     const double INF = 1e30;
     vector<double> best_cost(N, INF);
     vector<int> next_node(N, -1);
 
-    // Initialize cost of sink stage nodes = 0 (last stage)
+
     int last_stage = S - 1;
     for (int k = 0; k < stage_count[last_stage]; ++k) {
         int node = stage_start[last_stage] + k;
@@ -68,7 +69,7 @@ int main() {
         next_node[node] = -1;
     }
 
-    // Classic Forward DP
+  
     for (int st = S - 2; st >= 0; --st) {
         for (int k = 0; k < stage_count[st]; ++k) {
             int u = stage_start[st] + k;
@@ -87,7 +88,7 @@ int main() {
         }
     }
 
-    // Output best costs from Stage-0 nodes
+  
     cout << fixed << setprecision(6);
     cout << "\nBest costs from Stage-0 nodes:\n";
     for (int k = 0; k < stage_count[0]; ++k) {
@@ -96,7 +97,7 @@ int main() {
         else cout << "Node " << u << ": cost = " << best_cost[u] << "\n";
     }
 
-    // Example: retrieve path from a given source node s
+
     cout << "\nEnter a source node id (in stage 0) to print path, or -1 to skip: "<<flush;
     int src;
     cin >> src;
@@ -125,7 +126,7 @@ int main() {
         }
     }
 
-    // ---------- Real-time updates ----------
+
     cout << "\nEnter number of live updates to edge costs (0 to finish): "<<flush;
     int Q; cin >> Q;
     while (Q-- > 0) {
@@ -134,14 +135,14 @@ int main() {
         cout << "Enter edge update (u v multiplier): "<<flush;
         cin >> u >> v >> multiplier;
 
-        // update edges from u to v
+  
         for (auto &e : adj[u]) {
             if (e.to == v) {
                 e.cur_cost = e.base_cost * multiplier;
             }
         }
 
-        // Incremental update
+
         auto recompute_node = [&](int node) -> double {
             double best = INF;
             int bestv = -1;
@@ -178,7 +179,6 @@ int main() {
         if (best_cost[u] >= INF/2) cout << "Node " << u << ": unreachable\n";
         else cout << "Node " << u << ": cost = " << best_cost[u] << "\n";
     }
-// Retrieve path from a given source node s
     cout << "\nEnter a source node id (in stage 0) to print path, or -1 to skip: "<<flush;
     cin >> src;
     if (src >= 0 && src < N) {
@@ -192,7 +192,7 @@ int main() {
                 cout << cur;
                 int nxt = next_node[cur];
                 if (nxt != -1) {
-                    // find edge cost for display
+         
                     double ecost = 0;
                     bool found = false;
                     for (auto &e : adj[cur]) if (e.to == nxt) { ecost = e.cur_cost; found=true; break; }
