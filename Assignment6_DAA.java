@@ -1,6 +1,6 @@
 //Shravani navnit Joshi
 //PRN :123B1F039
-
+//DATE : 01/09/25
 import java.util.*;
 
 class Item {
@@ -96,4 +96,5 @@ public class Assignment6_DAA {
         System.out.println("\nMaximum Total Utility (DP): " + maxUtility);
     }
 }
+
 
